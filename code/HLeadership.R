@@ -1,14 +1,13 @@
-library(dplyr)
-library(showtext)
-library(stringr)
-library(ggplot2)
 library(psych)
 library(ggraph)
 library(factoextra)
-library(textclean)
+library(dplyr)
+library(tidyr)
+library(showtext)
 
 install.packages("extrafont")
-
+font_add_google(name = "Nanum Gothic", family = "nanum")
+showtext_auto()
 
 setwd("~/Desktop/HR/data")
 
@@ -32,7 +31,6 @@ summary(alpha_all)
 
 
 
-
 fa.parallel(df[, 1:36], fa = "fa", n.iter = 100, show.legend = TRUE, main = "The Number of Factors")
 
 efa_result <- fa(df[, 1:36], nfactors = 2, rotate = 'oblimin', fm = 'ml')
@@ -40,11 +38,6 @@ fa.diagram(efa_result, cut = 0.3, main = "EFA 2-Factors Solution Diagram")
 
 efa_result <- fa(df[, 1:36], nfactors = 1, rotate = 'oblimin', fm = 'ml')
 fa.diagram(efa_result, cut = 0.3, main = "EFA 1-Factors Solution Diagram")
-
-
-
-
-
 
 
 
